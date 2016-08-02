@@ -1,0 +1,31 @@
+<ion-view view-title="กรมที่ดิน">
+  <ion-nav-buttons side="right">
+    <button ng-click="search();" class="button button-icon icon ion-search" style="color: #fff;"></button>
+  </ion-nav-buttons>
+  <ion-content  >
+    <div class="top-nav">
+      <div class="col-66" style="float: left;">
+        <div style="float: left;display:block;width: 40px;">
+          <img src="img/icon-aim.png" style="width: 30px;margin: 10px;">
+        </div>
+        <div style="float: right;display:block;width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 4px;">
+          {{locname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+          {{locname2}}
+        </div>
+      </div>
+      <div class="col-33" style="float: right;border-left: #ddd solid 1px;margin: 2px;height: 43px;">
+       <a  href="#/app/maplist" style="text-decoration: none;"><p style="font-size: 20px;margin: 13px;margin-left: 20px; margin-right: 20px;color: #757575;">Map &nbsp;&nbsp;<i
+          class="ion-chevron-down"></i>
+        </p></a>
+      </div>
+    </div>
+
+
+  </ion-content>
+  <ion-content data-tap-disabled="true" style="margin-top: 50px;">
+    <div class="curentloc" ng-click="locate();"><i
+      class="ion-navigate" style="z-index: 10000;"></i></div>
+    <leaflet defaults="map.defaults" center="map.center" markers="map.markers" ng-if="map">
+    </leaflet>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,46 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-dol text-center">
+      <div style="display: table-row;text-align: center;width: 100%;">
+        <img src="img/logo-dol.png" style="width: 100px;">
+        <p>กรมที่ดิน กระทรวงมหาดไทย<br/>ver 1.0</p>
+      </div>
+    </ion-header-bar>
+    <ion-content style="top: 200px;">
+      <ion-item menu-close href="#/app/map">
+        แผนที่
+      </ion-item>
+      <ion-item menu-close href="#/app/maplist">
+        ชั้นข้อมูลแผนที่
+      </ion-item>
+      <ion-item menu-close href="#/app/setofflinemap">
+        กำหนดพื้นที่ออฟไลน์
+      </ion-item>
+      <ion-item menu-close href="#/app/sync">
+        ซิงค์ข้อมูล
+      </ion-item>
+      <ion-item menu-close href="#/app/howto">
+        วิธีใช้งาน
+      </ion-item>
+      <div class="login-bottom text-center" menu-close ng-click="login()">
+        <p style="padding: 15px;padding-bottom: 5px;">เข้าสู่ระบบ</p>
+      </div>
+    </ion-content>
+
+
+  </ion-side-menu>
+
+</ion-side-menus>

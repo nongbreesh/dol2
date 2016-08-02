@@ -1,0 +1,39 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">ค้นหารูปแปลงที่ดิน</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()" style="    color: #F44336;">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doSearch()">
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            กรุณาเลือกจังหวัด
+          </div>
+          <select>
+            <option selected>กรุเทพมหานคน</option>
+            <option >ขอนแก่น</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            กรุณาเลือกอำเภอ
+          </div>
+          <select>
+            <option selected>---กรุณาเลือก---</option>
+          </select>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">เลขที่โฉนด</span>
+          <input type="text" placeholder="ตัวอย่างเช่น 123456">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" style="background: #FF8030;">เริ่มค้นหา</button>
+        </label>
+      </div>
+
+    </form>
+  </ion-content>
+</ion-modal-view>

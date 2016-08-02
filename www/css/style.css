@@ -1,0 +1,135 @@
+/* Empty. Add your own CSS if you like */
+.bar.bar-stable{
+  background: #2E938A;
+}
+
+.bar.bar-stable .title{
+  color: #fff;
+}
+.bar-dol{
+  background: #fff;
+  padding: 25px;
+  height: 150px;
+  color: #797979;
+}
+.bar-stable .button.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #fff;
+  font-size: 17px;
+}
+.ionic-scroll > .scroll{
+  height: 100%;
+}
+.login-bottom{
+  color: #fff;
+  background:#2E938A;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  font-size: 16px;
+}
+.top-nav{
+  border-bottom: 2px solid #FF8030;
+  min-height: 50px;
+  background: #fff;
+}
+.rotate-90 {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.scroll, .angular-leaflet-map {
+  height: 100%;
+}
+
+.leaflet-bottom {
+  bottom : 10px;
+}
+
+.item.item-body p {
+  margin-top: 0;
+}
+
+.tabs.border-top {
+  border-top: 1px solid #ddd !important;
+}
+.curentloc{
+  font-size: 22px;
+  padding: 10px;
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #6f6f6f;
+  bottom: 40px;
+  right: 10px;
+}
+.mode{
+  font-size: 16px;
+  padding: 10px;
+  position: absolute;
+  z-index: 999;
+  background: #292929;
+  color: #fff;
+  top: 0px;
+  width: 100%;
+  line-height: 20px;
+  text-align: center;
+}
+.toptool{
+  font-size: 22px;
+  padding: 10px;
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 1px 1px 1px #6f6f6f;
+  top: 70px;
+  right: 0px;
+  width: 50px;
+  line-height: 50px;
+  opacity: 0.9;
+}
+.toptool button{
+  border: 0px;
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+.toptool button img{
+  width: 30px;
+}
+.panel-bottom{
+  position: absolute;
+  bottom: 0px;
+  background: #000;
+  height: 50px;
+  width: 100%;
+}
+.btn-block{
+  width: 50%;
+  height: 100%;
+  border: 0px;
+  color:#fff;
+}
+.badge-top-right{
+  top: 1px !important;
+  right: 0px !important;;
+  font-size: 12px !important;;
+}
+#status {
+  position:absolute; bottom:0; left:0;
+  z-index:100;
+
+  background-color:white;
+  border-top-right-radius:1em;
+  padding:1em;
+}
+#savemapoffline {
+  position:absolute; bottom:0; right:0;
+  z-index:100;
+  background-color:white;
+  padding:1em;
+}

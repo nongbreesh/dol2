@@ -1,0 +1,14 @@
+<ion-view view-title="ชั้นข้อมูลแผนที่">
+
+  <ion-content>
+    <div class="list">
+
+      <a class="item item-thumbnail-left" href="#app/layer/{{value.title}}" ng-repeat="value in layerlist">
+        <img src="{{value.thumbnail_url}}">
+        <h2>{{value.title}}</h2>
+        <p>{{value.abstract}}</p>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>
