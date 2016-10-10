@@ -3,8 +3,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/plugins/cordova-sqlite-storage/spec/platforms" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="dol2 node_modules" level="project" />
   </component>
 </module>

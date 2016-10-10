@@ -1,0 +1,19 @@
+<ion-view view-title="{{title}}">
+  <ion-nav-buttons side="right">
+    <a href="#app/layer/{{id}}/0/{{title}}/{{type}}/new" class="button button-icon icon ion-android-add rotate-90"
+            style="color: #fff;"></a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+
+      <a class="item item-thumbnail-left" href="#app/layer/{{value.layer_id}}/{{value.id}}/{{value.title}}/{{type}}/edit" ng-repeat="value in layerlist">
+        <img src="img/layer.png">
+        <p style="    margin-top: 20px;">{{value.metadata}}</p>
+        <p >อัพเดทเมื่อ {{value.last_sync}}</p>
+        <i ng-if="value.ispushtoserver == 0" style="color: #C6E746;font-size: 28px;" class="ion-android-upload"></i>
+        <i ng-if="value.ispushtoserver == 1" style="color: #4cd964;font-size: 28px;" class="ion-android-cloud-done"></i>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

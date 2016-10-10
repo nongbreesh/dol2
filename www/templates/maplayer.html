@@ -1,20 +1,33 @@
 <ion-view view-title="{{title}}">
-  <ion-nav-buttons side="right">
-    <button ng-click="actionsheetshow();" class="button button-icon icon ion-more rotate-90"
-            style="color: #fff;"></button>
-  </ion-nav-buttons>
-  <ion-content data-tap-disabled="true">
-    <div class="mode">{{modestatus}}</div>
+  <!--<ion-nav-buttons side="right">-->
+    <!--<button ng-click="actionsheetshow();" class="button button-icon icon ion-more rotate-90"-->
+            <!--style="color: #fff;"></button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content data-tap-disabled="true" ng-class="{addtop: modestatus == 'โหมดเพิ่มข้อมูล' }">
+
     <div class="toptool" ng-if="modestatus == 'โหมดเพิ่มข้อมูล'">
-      <button ng-click="activetool('POLYGON')"><img src="img/ic_polygon.png"></button>
-      <button ng-click="activetool('LINE')"><img src="img/ic_line.png"></button>
-      <button ng-click="activetool('POINT')"><img src="img/ic_point.png"></button>
+      <button ng-if="layer_type == 'POLYGON'" ng-click="activetool('POLYGON')"><img src="img/ic_polygon.png"></button>
+      <button ng-if="layer_type == 'LINE'" ng-click="activetool('LINE')"><img src="img/ic_line.png"></button>
+      <button ng-if="layer_type == 'POINT'" ng-click="activetool('POINT')"><img src="img/ic_point.png"></button>
     </div>
 
 
     <div class="curentloc" ng-click="locate();"><i
       class="ion-navigate" style="z-index: 10000;"></i></div>
-    <leaflet defaults="map.defaults" center="map.center" markers="map.markers" ng-if="map">
+    <leaflet defaults="map.defaults" paths="map.paths" layers="map.layers" center="map.center" markers="map.markers"
+             ng-if="map">
     </leaflet>
+    <div class="center-pin">
+      <img src="img/icon-aim.png">
+    </div>
   </ion-content>
+  <div ng-if="modestatus == 'โหมดเพิ่มข้อมูล'" class="login-bottom text-center" menu-close
+       style="display: block;">
+    <p style="padding: 15px; background: #ee3a0d; width: 33.33%; float: left; margin: 0px;" ng-click="addpoint(0)">
+      เพิ่มจุด</p>
+    <p style="padding: 15px; background: #3acc6d; width: 33.33%; float: left; margin: 0px;" ng-click="addpoint(1)">
+      ต่อไป</p>
+    <p style="padding: 15px; background:#ddd; width: 33.33%; float: left; margin: 0px;" ng-click="addpoint(-1)">
+      เริ่มใหม่</p>
+  </div>
 </ion-view>

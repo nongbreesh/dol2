@@ -1,42 +1,21 @@
 <ion-view view-title="รายละเอียด">
 
   <ion-content data-tap-disabled="true">
-    <ul class="list">
-      <li class="item">
-        <strong>หมายเลขระวาง : </strong>5542 II 6426
-      </li>
-      <li class="item">
-        <strong>เลขที่ดิน : </strong>95
-      </li>
-      <li class="item">
-        <strong>เลขโฉนดที่ดิน : </strong>123456
-      </li>
-      <li class="item">
-        <strong>หน้าสำรวจ  : </strong>2328
-      </li>
-      <li class="item">
-        <strong>ตำบล : </strong>บ้านค้อ
-      </li>
-      <li class="item">
-        <strong>อำเภอ : </strong>เมืองขอนแก่น
-      </li>
-      <li class="item">
-        <strong>จังหวัด : </strong>ขอนแก่น
-      </li>
-      <li class="item">
-        <strong>สำนักงานที่ดิน : </strong>สำนักงานที่ดินจังหวัดขอนแก่น
-      </li>
-      <li class="item">
-        <strong>ราคาประเมินรายแปลงกรมธนารักษ์  : </strong><br>กรุณาตรวจสอบข้อมูลผ่านทาง <br> <a  href="#" onclick="window.open('http://property.treasury.go.th/pvmwebsite/index.asp', '_system', 'location=yes'); return false;">เว็บไซต์กรมธนารักษ์</a>
-      </li>
-      <li class="item">
-        <strong>ค่าพิกัดแปลง  : </strong><a  href="#" onclick="window.open('http://maps.google.com/?q=16.5240096,102.8022409', '_system', 'location=yes'); return false;">16.5240096,102.8022409</a>
-      </li>
+    <div class="list">
+      <label class="item item-input"  ng-repeat="(key, metadetail) in meta">
+        <span class="input-label">{{metadetail.meta_title}}</span>
 
-    </ul>
+
+
+        <input ng-if="metadetail.meta_type == 'STRING'" type="text" placeholder="กรุณาระบุ"   name="txtmeta[]"
+               ng-value="mapval(eatchfield, metadetail.meta_title)"  >
+        <input ng-if="metadetail.meta_type == 'INTEGER'" type="number" placeholder="กรุณาระบุ"   name="txtmeta[]" >
+        <input ng-if="metadetail.meta_type == 'DOUBLE'" type="number" placeholder="กรุณาระบุ"   name="txtmeta[]" >
+      </label>
+
+    </div>
   </ion-content>
   <div class="panel-bottom">
-    <button class="btn-block" style="float: left;background: #FF8030;">นำทางไปที่สำนักงาน</button>
-    <button class="btn-block" style="float: right;background: #2E938A;">นำทางไปที่ดิน</button>
+    <button class="btn-block" style="background: #FF8030;width: 100%;" ng-click="savedate()">บันทึก/แก้ไข</button>
   </div>
 </ion-view>

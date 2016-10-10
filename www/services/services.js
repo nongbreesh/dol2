@@ -141,6 +141,7 @@ angular.module('starter.services', [])
     return {
       query: function (method, url, params, data) {
         var deferred = $q.defer();
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
         $http({
           method: method,
           url: url,
