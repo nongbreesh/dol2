@@ -8,13 +8,15 @@
 var db;
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'leaflet-directive', 'ngCordova', 'LocalStorageModule'])
 
-  .run(function ($ionicPlatform, $cordovaSQLite,$cordovaFileTransfer) {
+  .run(function ($ionicPlatform, $cordovaSQLite, $rootScope) {
+    $rootScope.appReady = { status: false };
     $ionicPlatform.ready(function () {
+      $rootScope.appReady.status = true;
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(true);
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+        cordova.plugins.Keyboard.disableScroll(false);
 
       }
       if (window.StatusBar) {
@@ -23,8 +25,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
 
 
-      //db = $cordovaSQLite.openDB({name: "dol.db", location: 'default'});
-      db = window.openDatabase("sqlite", "1.0", "dol", 2000);
+      if (window.cordova) {
+        db = $cordovaSQLite.openDB({name: "dol.db", location: 'default'});
+      }
+      else {
+        db = window.openDatabase("sqlite", "1.0", "dol", 1000000);
+      }
+
+
+
+
       //$cordovaSQLite.execute(db,'drop table tilelayer');
       //$cordovaSQLite.execute(db,'drop table layer');
       //$cordovaSQLite.execute(db,'drop table meta');
@@ -32,29 +42,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
       $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS tilelayer (id INTEGER PRIMARY KEY AUTOINCREMENT, ,tilevalue TEXT)');
       $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS layer (id INTEGER PRIMARY KEY AUTOINCREMENT, layer_id INTEGER, layer_title TEXT, layer_type TEXT, status INTEGER,last_sync DEFAULT CURRENT_TIMESTAMP)');
-      $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS meta (id INTEGER PRIMARY KEY AUTOINCREMENT, layer_id INTEGER, meta_title TEXT, meta_type TEXT,defult_value TEXT)');
-      $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS layer_data (id INTEGER PRIMARY KEY AUTOINCREMENT, layer_id INTEGER, point TEXT, line TEXT, polygon TEXT, metadata TEXT , ispushtoserver INTEGER,userid INTEGER,refid INTEGER,video TEXT,image TEXT,last_sync DEFAULT CURRENT_TIMESTAMP)');
-
-
-
-
-
-
-
-
-
-      var url = "http://3.bp.blogspot.com/-XchURXRz-5c/U5ApPOrPM9I/AAAAAAAADoo/YZEj4qeSlqo/s1600/Final-Fantasy-XV-Noctis-Red-Eyes.png";
-      var filename = url.split("/").pop();
-      var targetPath = cordova.file.externalRootDirectory + 'Pictures/' + filename;
-
-      $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
-        $scope.hasil = 'Save file on '+targetPath+' success!';
-        $scope.mywallpaper=targetPath;
-      }, function (error) {
-        $scope.hasil = 'Error Download file';
-      }, function (progress) {
-        $scope.downloadProgress = (progress.loaded / progress.total) * 100;
-      });
+      $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS meta (id INTEGER PRIMARY KEY AUTOINCREMENT, layer_id INTEGER, meta_title TEXT, meta_type TEXT,defult_value TEXT,status INTEGER DEFAULT 1)');
+      $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS layer_data (id INTEGER PRIMARY KEY AUTOINCREMENT, layer_id INTEGER, point TEXT, line TEXT, polygon TEXT, metadata TEXT ,moremetadata TEXT, ispushtoserver INTEGER,userid INTEGER,refid INTEGER,video TEXT,image TEXT,last_sync DEFAULT CURRENT_TIMESTAMP, status INTEGER DEFAULT 1)');
 
 
 
@@ -62,9 +51,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
+  .config(function ($stateProvider, $urlRouterProvider, $compileProvider) {
 
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);
+
+    $stateProvider
       .state('app', {
         url: '/app',
         abstract: true,
@@ -108,6 +99,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+      .state('app.maplayerlist', {
+        url: '/maplayerlist',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/maplayerlist.html',
+            controller: 'MapLayerlistCtrl'
+          }
+        }
+      })
       .state('app.login', {
         url: '/login',
         views: {
@@ -128,6 +128,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       })
       .state('app.maplist', {
         url: '/maplist',
+        cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/maplist.html',
@@ -147,6 +148,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       })
       .state('app.setofflinemap', {
         url: '/setofflinemap',
+        cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/setofflinemap.html',

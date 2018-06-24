@@ -114,7 +114,7 @@ angular.module('starter.services', [])
       }
     }
   })
-  .factory('QueryService', function ($http, $q, apiUrl) {
+  .factory('QueryService', function ($http, $q, apiUrl,$timeout) {
     return {
       query: function (method, url, data) {
         var deferred = $q.defer();
@@ -132,12 +132,16 @@ angular.module('starter.services', [])
           deferred.reject(error);
         });
 
+        $timeout(function() {
+                 deferred.resolve('timeout'); // this aborts the request!
+               }, 10000);
+
         return deferred.promise;
       }
     };
 
   })
-  .factory('ApiService', function ($http, $q) {
+  .factory('ApiService', function ($http, $q,$timeout) {
     return {
       query: function (method, url, params, data) {
         var deferred = $q.defer();
@@ -155,6 +159,10 @@ angular.module('starter.services', [])
         }, function (error) {
           deferred.reject(error);
         });
+
+        $timeout(function() {
+                 deferred.resolve('timeout'); // this aborts the request!
+               }, 10000);
 
         return deferred.promise;
       }
@@ -326,4 +334,3 @@ angular.module('starter.services', [])
     }
   };
 });
-

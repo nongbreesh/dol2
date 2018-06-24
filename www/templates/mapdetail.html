@@ -1,21 +1,61 @@
 <ion-view view-title="รายละเอียด">
 
-  <ion-content data-tap-disabled="true">
-    <div class="list">
-      <label class="item item-input"  ng-repeat="(key, metadetail) in meta">
-        <span class="input-label">{{metadetail.meta_title}}</span>
+  <ion-content data-tap-disabled="true" overflow-scroll="false">
+    <form>
+
+      <div class="list">
+        <label class="item item-input" ng-repeat="(key, metadetail) in meta">
+          <span class="input-label">{{metadetail.meta_title}}</span>
+          <input ng-if="metadetail.meta_type == 'STRING'" type="text" placeholder="กรุณาระบุ" name="txtmeta[]" ng-value="mapval(eatchfield, metadetail.meta_title)">
+          <input ng-if="metadetail.meta_type == 'INTEGER'" type="number" placeholder="กรุณาระบุ" name="txtmeta[]" ng-value="mapval(eatchfield, metadetail.meta_title)">
+          <input ng-if="metadetail.meta_type == 'DOUBLE'" type="number" placeholder="กรุณาระบุ" name="txtmeta[]" ng-value="mapval(eatchfield, metadetail.meta_title)">
+        </label>
+
+        <div ng-bind-html="moremetahtml"></div>
+        <label class="item item-input" ng-repeat="(key, moremetadetail) in moremeta">
+          <span class="input-label">เพิ่มเติม({{key +1}})</span>
+          <input type="text" placeholder="กรุณาระบุ" name="txtmoremeta[]" ng-model="moremetadetail.value" ng-value="moremetadetail.value">
+        </label>
+
+        <button class="btn-block" ng-click="addmeta()" style="background:green;height: 30px;float:right !important">
+          (+)เพิ่มรายการ
+        </button>
+
+      </div>
+      <div ng-if="images != null && images != ''" style="width: 100px; height: 100px; background: #ddd;display:inline-block;float: left;margin: 10px;">
+        <img style="width: 100px; height: 100px;" ng-src="{{images}}" art="" class="img-thumbnail" />
+      </div>
 
 
+      <button class="btn-block" ng-click="selImages()" style="width: 100% !important;background: #55A4FF;height: 50px;">
+        เลือกรูปภาพ
+      </button>
 
-        <input ng-if="metadetail.meta_type == 'STRING'" type="text" placeholder="กรุณาระบุ"   name="txtmeta[]"
-               ng-value="mapval(eatchfield, metadetail.meta_title)"  >
-        <input ng-if="metadetail.meta_type == 'INTEGER'" type="number" placeholder="กรุณาระบุ"   name="txtmeta[]" >
-        <input ng-if="metadetail.meta_type == 'DOUBLE'" type="number" placeholder="กรุณาระบุ"   name="txtmeta[]" >
-      </label>
 
-    </div>
+      <div ng-if="videos != null && videos != ''" style=" background: #ddd;display:inline-block;float: left;margin: 10px;">
+        <!-- <video   controls>
+              <source ng-src="{{trustSrc(videos)}}"  type="video/mp4">
+            </video> -->
+
+        <a ng-href="{{videos}}">{{videoname}}</a>
+      </div>
+      <button class="btn-block" ng-click="selVideos()" style="width: 100% !important;background: #55A4FF;height: 50px;">
+        เลือกวีดีโอ
+      </button>
+
+
+      <!--<div ng-if="video != null && video != ''" style="width: 100px; height: 100px; background: #ddd;display:inline-block;float: left;margin: 10px;" >-->
+      <!--<img style="width: 100px; height: 100px;" ng-src="{{video}}" art=""  class="img-thumbnail"/>-->
+      <!--</div>-->
+
+
+      <!--<button class="btn-block" ng-click="selVideo()" style="width: 100% !important;background: #55A4FF;height: 50px;">-->
+      <!--เลือกวีดีโอ-->
+      <!--</button>-->
+
+      <button class="btn-block" style="background: #FF8030;width: 100%;height: 50px; margin-top:8px" ng-click="savedate()">บันทึก/แก้ไข</button>
+
+    </form>
   </ion-content>
-  <div class="panel-bottom">
-    <button class="btn-block" style="background: #FF8030;width: 100%;" ng-click="savedate()">บันทึก/แก้ไข</button>
-  </div>
+
 </ion-view>

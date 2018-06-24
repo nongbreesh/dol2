@@ -1,24 +1,43 @@
-<ion-view view-title="กรมที่ดิน">
-  <ion-content  >
-    <div class="top-nav">
-      <div class="col-100" style="float: left;">
-        <div style="float: left;display:block;width: 40px;">
-          <img src="img/icon-aim.png" style="width: 30px;margin: 10px;">
-        </div>
-        <div style="float: right;display:block;width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 4px;">
-          {{locname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-          {{locname2}}
-        </div>
+<ion-view view-title="DOLviewEditor">
+  <ion-content>
+
+  <div class="top-nav">
+    <div class="row" style="padding: 0px; height: 40px;">
+
+    <!-- <div class="col-66" style="float: left;">
+      <div style="float: left;display:block;width: 40px;">
+        <img src="img/icon-aim.png" style="width: 30px;margin: 10px;">
       </div>
-
+      <div
+        style="float: right;display:block;width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 4px;">
+        {{locname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+        {{locname2}}
+      </div>
+    </div> -->
+    <div class="col-66" style="float: left;">
+      <div
+        style="float: left;text-align:center; width:100%;display:block;overflow-x:scroll;white-space: nowrap;padding: 4px;">
+        <ion-scroll zooming="true" direction="x" style="width: 100%;">
+              <p style="line-height:40px;font-size:12px;">Active Layer {{activelayer}} </p>
+            </ion-scroll>
+      </div>
     </div>
-
-
-  </ion-content>
+    <div class="col-33" style="float: right;border-left: #ddd solid 1px;margin: 2px;height: 43px;">
+      <a href="#/app/maplayerlist" style="text-decoration: none;"><p
+        style="font-size: 34px;width:30px;margin-left:30%;margin-top:5%;color: #757575; transform: rotate(35deg);"><i
+        class="ion-ios-browsers-outline "   ></i>
+      </p></a>
+    </div>
+  </div>
+  </div>
+  <!-- <div class="active-layer" style="height:50px;">
+    Layer ปัจจุบัน {{activelayer}}
+  </div> -->
+</ion-content>
   <ion-content data-tap-disabled="true" style="margin-top: 50px;">
     <div class="curentloc" ng-click="locate();"><i
       class="ion-navigate" style="z-index: 10000;"></i></div>
-    <leaflet defaults="map.defaults" layers="map.layers" center="map.center" markers="map.markers" ng-if="map">
+    <leaflet  layers="map.layers" center="map.center" markers="map.markers" ng-if="map">
     </leaflet>
     </ion-content>
 </ion-view>

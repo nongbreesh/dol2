@@ -1,16 +1,15 @@
 <ion-view view-title="ชั้นข้อมูลแผนที่" >
 
-  <ion-content >
-    <div class="list">
+  <ion-content style="margin-bottom:50px;">
+    <div class="list" >
       <a class="item item-thumbnail-left" href="#app/layerlist/{{value.layer_id}}/{{value.title}}/{{value.layer_type}}" ng-repeat="value in layerlist">
         <img src="img/layers.png">
         <h2 style="    margin-top: 20px;">{{value.title}}</h2>
         <p style="color:red;">ซิงค์ล่าสุดเมื่อ {{value.last_sync}}</p>
-      </a>
-
-    </div>
-    <div class="login-bottom text-center" style="background: #0c60ee;" menu-close ng-click="syncdata()">
-      <p style="padding: 15px;padding-bottom: 5px;">ซิงค์ข้อมูลจากเซิฟเวอร์</p>
-    </div>
+      </a> 
+    </div> 
   </ion-content>
+  <div class="login-bottom text-center" style="background: #0c60ee;" menu-close ng-click="syncdata()">
+    <p style="padding: 15px;padding-bottom: 5px;">ซิงค์ข้อมูลจากเซิฟเวอร์</p>
+  </div>
 </ion-view>

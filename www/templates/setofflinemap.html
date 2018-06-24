@@ -3,11 +3,13 @@
     <button ng-click="actionsheetshow();" class="button button-icon icon ion-more rotate-90"
             style="color: #fff;"></button>
   </ion-nav-buttons>
-  <ion-content>
+
+  <ion-content data-tap-disabled="true" > 
     <div class="curentloc" ng-click="locate();"><i
       class="ion-navigate" style="z-index: 10000;"></i></div>
-    <leaflet   center="map.center"      tiles="map.tiles"  >
+      <div class="noticemap" ng-click="locate();"> *ระบบจะเก็บแผนที่ offline ตั้งแต่ zoom ที่ 15 - 18</div>
+    <leaflet center="map.center" tiles="map.tiles" ng-if="map">
     </leaflet>
-
   </ion-content>
 </ion-view>
+xw

@@ -1,27 +1,25 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-  </ion-header-bar>
-  <ion-content>
-    <div style="padding:25px;text-align: center">
-      <img src="img/logo-dol.png" width="200px;">
-      <h3>โปรแกรมนำเข้าข้อมูลแผนที่</h3>
-      <p>กรุณาเข้าสู่ระบบก่อน</p>
+<ion-header-bar>
+  <h1 class="title">Login</h1>
+</ion-header-bar>
+<ion-content style="height: 100%; position: absolute !important;">
+  <div style="text-align: center;padding-top:25px;">
+    <img src="img/icon.png" width="150px;">
+    <h5>โปรแกรมนำเข้าข้อมูลแผนที่ (1.0)</h5>
+    <p>กรุณาเข้าสู่ระบบก่อน</p>
+  </div>
+  <form ng-submit="doLogin()">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" ng-model="loginData.username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="loginData.password">
+      </label>
+      <label class="item">
+        <button class="button button-block button-positive" type="submit" style="background: #2E938A;">Log in</button>
+      </label>
     </div>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit" style="background: #2E938A;">Log in</button>
-        </label>
-      </div>
-    </form>
-  </ion-content>
-</ion-modal-view>
+  </form>
+</ion-content>
